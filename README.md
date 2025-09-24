@@ -1,9 +1,9 @@
 # CS213 - OOP Project: Image Filters
 
 ## 📌 Team Members
-- Sara Mohamed Salah El-Din   ( ID : 20242150 )
-- Haneen Foaad                ( ID : 20240175 )
-- Sara Ali Refaey Abdahamed   ( ID : 20242148 )
+ - Haneen Fouad Abo Al-Yazid   ( ID : 20240175 )
+ - Sara Ali Refaey Abdalhamed  ( ID : 20242148 )
+ - Sara Mohamed Salah El-Din   ( ID : 20242150 )
 
   
 ## 📌 Description
