@@ -19,9 +19,16 @@ The program allows the user to:
 
 ## 📌 Filters Implemented
 - Filter 1: Grayscale Conversion
-- Filter 2: Invert Colors
-- Filter 3: Merge Two Images
-- Filter 4: Flip Image
-- Filter 5: Darken/Lighten
+- Filter 2: Black and White
+- Filter 3: Invert Colors
+- Filter 4: Merge Two Images
+- Filter 5: Flip Image
 - Filter 6: Rotate (90, 180, 270)
+- Filter 7: Darken/Lighten
+- Filter 8: Crop Images
+- Filter 9: Adding a Frame to the Picture
+- Filter 10: Detect Image Edges
+- Filter 11: Resizing Images
+- Filter 12: Blur Images
+  
   
