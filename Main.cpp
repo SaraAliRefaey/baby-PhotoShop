@@ -19,7 +19,22 @@ Image Black_And_White_Filter2(Image img) {
     }
     return img;
 }
+Image Grayscale_Conversion(Image image) {
+    for (int i = 0; i < image.width; i++) {
+        for (int j = 0; j < image.height; j++) {
+            unsigned int ave=0;
+            for (int k = 0; k < image.channels; k++) {
+                ave+=image(i,j,k);
 
+            }
+            ave=ave/3;
+            for (int k = 0; k < 3; k++) {
+                image(i,j,k)=ave;
+            }
+        }
+    }
+        return image;
+}
 
 Image flip_Horizontal5(Image& image) {
     for (int y = 0; y < image.height; y++) {
@@ -46,7 +61,20 @@ Image flip_Vertical5(Image& image) {
     }
     return image;
 }
-
+Image MergeImages(Image image1 ,Image image2) {
+    int new_width=min(image1.width,image2.width);
+    int new_height=min(image1.height,image2.height);
+    Image image3(new_width,new_height);
+    for(int i=0;i<new_width;i++) {
+        for(int j=0;j<new_height;j++) {
+            for(int k=0;k<3;k++) {
+                int value=(image2(i,j,k)+image1(i,j,k))/2;
+                image3(i,j,k)=value;
+            }
+        }
+    }
+    return image3;
+}
 
 int main()
 {
@@ -79,13 +107,22 @@ int main()
 
         if(taskNum==1)
         {
-            // function 1
+            image = Grayscale_Conversion(image);
         }
         else if(taskNum==2)
         {
             image = Black_And_White_Filter2(image);
         }
+          else if(taskNum==4)
+        {
+            cout << "Enter the second image name: ";
+            string name2;
+            cin >> name2;
+            Image img2(name2);
+            image = MergeImages(image, img2);
 
+        }
+      
 
         else if(taskNum==5)
         {
@@ -101,6 +138,7 @@ int main()
                 continue;
             }
         }
+            
 
         else if(taskNum==13)
         {
