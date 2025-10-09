@@ -493,7 +493,16 @@ Image blurImage12(Image toedit)
     return result;
 
 }
-
+//filter 13
+Image natural_sunlight(Image image){
+    for (int i = 0; i < image.width; ++i) {
+        for (int j = 0; j < image.height; ++j) {
+            image(i, j, 0) = min(255,image(i, j, 0)+35);
+            image(i,j,1) = min(255,image(i,j,1)+55);
+        }
+    }
+    return image;
+}
 
 
 Image Wano15(Image toedit)
@@ -517,6 +526,7 @@ Image Wano15(Image toedit)
     }
     return toedit;
 }
+
 
 
 
