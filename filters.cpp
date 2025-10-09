@@ -146,7 +146,40 @@ Image rotateImage6(Image toedit, int rotat)
     }
 }
 // Filter 7: Darken / Lighten
-Image adjustBrightness7(Image img, float factor) {
+Image derken(Image image) {
+    for (int i = 0; i < image.width; ++i) {
+        for (int j = 0; j < image.height; ++j) {
+            for (int k = 0; k < 3; ++k) {
+                int value=image(i, j, k) *0.5;
+                if (value < 0) {
+                    value = 0;
+                }
+                if (value > 255) {
+                    value = 255;
+                }
+                image(i, j, k) = value;
+            }
+        }
+    }
+
+    return image;
+}
+Image lighten(Image image){
+    for (int i = 0; i < image.width; ++i) {
+        for (int j = 0; j < image.height; ++j) {
+            for (int k = 0; k < 3; ++k) {
+                int value=image(i, j, k) *1.5;
+                if (value < 0) {
+                    value = 0;
+                }
+                if (value > 255) {
+                    value = 255;
+                }
+                image(i, j, k) = value;
+            }
+        }
+    }
+    return image;
 
 }
 // Filter 8: Crop Image
@@ -396,10 +429,34 @@ Image frame9(Image toedit,int red,int green,int blue,int frame) {
 
 
 // Filter 10: Detect Edges
-Image detectEdges10()
-{
-
-
+Image detect_Image_edges(Image img) {
+    for (int i = 0; i < img.width; ++i) {
+        for (int j = 0; j < img.height; ++j) {
+            unsigned int avg = 0;
+            for (int k = 0; k < 3; ++k) {
+                avg += img(i, j, k);
+            }
+            avg /= 3;
+            unsigned char color = (avg >= 128) ? 255 : 0;
+            img(i, j, 0) = color;
+            img(i, j, 1) = color;
+            img(i, j, 2) = color;
+        }
+    }
+    Image img2 = img;
+    for (int i = 1; i < img.width-1; i++) {
+        for (int j = 1; j < img.height-1; j++) {
+            for (int k = 0; k < img.channels; k++) {
+                if (img2(i-1,j-1,k)!=img2(i, j, k)||img2(i, j, k)!=img2(i+1,j+1,k)) {
+                    img(i, j, k) = 0;
+                }
+                else {
+                    img(i, j, k) = 255;
+                }
+            }
+        }
+    }
+    return img;
 }
 
 // Filter 11: Resize Image
@@ -460,6 +517,7 @@ Image Wano15(Image toedit)
     }
     return toedit;
 }
+
 
 
 
