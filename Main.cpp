@@ -93,8 +93,36 @@ int main() {
         }
 
         else if(taskNum==7)
-        {
-            //function 7
+        {          Image darkImage = derken(image);
+            Image lightImage = lighten(image);
+
+            string darkName, lightName;
+            cout << "Enter filename for dark version (without extension): ";
+            cin >> darkName;
+            cout << "Enter filename for light version (without extension): ";
+            cin >> lightName;
+
+            int formatChoice;
+            cout << "Choose format: 1 = JPG, 2 = PNG, 3 = BMP\n";
+            cin >> formatChoice;
+
+            string extension;
+            if (formatChoice == 1)
+                extension = ".jpg";
+            else if (formatChoice == 2)
+                extension = ".png";
+            else if (formatChoice == 3)
+                extension = ".bmp";
+            else {
+                cout << "Invalid choice, saving as JPG by default.\n";
+                extension = ".jpg";
+            }
+
+            darkImage.saveImage(darkName + extension);
+            lightImage.saveImage(lightName + extension);
+
+            cout << "Dark image saved as " << darkName + extension << endl;
+            cout << "Light image saved as " << lightName + extension << endl;
         }
         else if(taskNum==8)
         {
@@ -120,7 +148,7 @@ int main() {
         }
         else if(taskNum==10)
         {
-            //function 10
+            image=detect_Image_edges(image);
         }
         else if(taskNum==11)
         {
@@ -137,7 +165,8 @@ int main() {
         }
         else if(taskNum==13)
         {
-
+            image=natural_sunlight(image);
+            imageChanged=true;
         }
         else if(taskNum==14)
         {
@@ -153,10 +182,27 @@ int main() {
         else if(taskNum==16)
         {
 
-            string newname;
-            cout <<"Enter the new name :";
+           string newname;
+            cout << "Enter the new filename (without extension): ";
             cin >> newname;
+
+            int formatChoice;
+            cout << "Choose format: 1 = JPG, 2 = PNG, 3 = BMP\n";
+            cin >> formatChoice;
+
+            if (formatChoice == 1) {
+                newname += ".jpg";
+            } else if (formatChoice == 2) {
+                newname += ".png";
+            } else if (formatChoice == 3) {
+                newname += ".bmp";
+            } else {
+                cout << "Invalid choice, saving as JPG by default.\n";
+                newname += ".jpg";
+            }
+
             image.saveImage(newname);
+            cout << "Image saved as " << newname << endl;
             continue;
         }
         else if(taskNum==17)
@@ -208,4 +254,5 @@ int main() {
         }
 
     }
+
 }
