@@ -30,5 +30,8 @@ The program allows the user to:
 - Filter 10: Detect Image Edges
 - Filter 11: Resizing Images
 - Filter 12: Blur Images
+- Filter 13: Land Of Wano
+- Filter 14: Oil Painting
+- Filter 15: Wano 
   
   
